@@ -15,7 +15,7 @@ PROG_GENRE: program type as labeled by Kantar Media Stradegy
 NETWORK: network in which the ad airs
 PRE_OCT_1: 1 if the ad airs prior to Oct. 1 and 0 otherwise
 POST_OCT_1: 1 if the ad airs on or after Oct. 1 and 0 otherwise
-AD_CREATIVE_ID: unique ad creative ID provided from Kantar Media Stradegy (disguised)
+AD_CREATIVE_ID: unique ad creative ID
 
 VOTER_PREFERENCE_DATA.csv
 DEM: 1 if the ad supports Clinton and 0 otherwise

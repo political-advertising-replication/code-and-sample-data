@@ -6,7 +6,7 @@ These files may be used for replication only.
 Notes:
 - Both Python and R are utilized.
 - Due to NDA, we disguise the WOM variables and advertising reach variable (audience size).
-- To avoid reposting public data, we disguise the voter preference variable (polls).
+- To avoid reposting public data, we disguise the voter preference variable (from USC Dornsife/Los Angeles Times Poll) or guide readers to the website where the data can be downloaded.
 
 [Build]
 - Slant Measure.ipynb (implement the slant measure from Gentzkow and Shapiro (2010) to transcribed advertising data).

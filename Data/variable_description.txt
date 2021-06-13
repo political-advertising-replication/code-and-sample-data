@@ -1,0 +1,58 @@
+WOM_DATA.csv
+CAN_WOM_5_POST: number of Tweets about candidate within 5 minutes after the ad airs (disguised)
+CAN_WOM_5_PRE: number of Tweets about candidate within 5 minutes before the ad airs (disguised)
+DEM: 1 if the ad supports Clinton and 0 otherwise
+ATT: 1 if attack/negative tone and 0 otherwise
+AD_LENGTH_IND: 1 if an ad is over 30 seconds and 0 otherwise
+AD_POSITION: relative ad position within ad break (bounded from 0 and 1)
+AUDIENCE: number of viewers for the ad at the beginning of the ad
+slant: measure of extremeness
+consistency: measure of consistent messaging
+WEEK: week indicator
+Day: day of the week indicator
+TIME_WINDOW: time of the day indicator in the prime TV time (30-minute increment)
+PROG_GENRE: program type as labeled by Kantar Media Stradegy
+NETWORK: network in which the ad airs
+PRE_OCT_1: 1 if the ad airs prior to Oct. 1 and 0 otherwise
+POST_OCT_1: 1 if the ad airs on or after Oct. 1 and 0 otherwise
+AD_CREATIVE_ID: unique ad creative ID provided from Kantar Media Stradegy (disguised)
+
+VOTER_PREFERENCE_DATA.csv
+DEM: 1 if the ad supports Clinton and 0 otherwise
+WEEK: week indicator
+Vote_Share: voter preference in % (disguised)
+Lagged_VS: one day lagged voter preference in % (disguised)
+ad_day: 1 if the candidate aired ads in the previous day and 0 otherwise
+no_ad_day: 1 if the candidate did not air ads in the previous day and 0 otherwise
+before_oct: 1 if the ad airs prior to Oct. 1 and 0 otherwise
+after_oct: 1 if the ad airs on or after Oct. 1 and 0 otherwise
+TOT_INSTANCE: number of ad airings in the previous day
+POSITION: weighted average of AD_POSITION in the previous day
+LENGTH: weighted average of AD_LENGTH_IND in the previous day
+tot_audience: summation of the AUDIENCE variable in the previous day
+comp_audience: summation of the AUDIENCE variable of the rival candidate in the previous day
+Weighted_Slant: weighted average of of the slant variable in the previous day
+Weighted_Cosine: weighted average of of the consistency variable in the previous day
+NEG: weighted average of of the ATT variable in the previous day
+AWARDS: share of total number of viewers on the awards program
+COMEDY: share of total number of viewers on the comedy program
+DOCUMENTARY: share of total number of viewers on the documentary program
+DRAMA_ADVENTURE: share of total number of viewers on the drame/adventure program
+MOVIE: share of total number of viewers on the movie program
+NEWS_POLITICAL: share of total number of viewers on the news program
+SLICE_OF_LIFE: share of total number of viewers on the slide of life program
+SPORTS: share of total number of viewers on the sports program
+SUSPENSE_MYSTERY: share of total number of viewers on the suspense/mystery program
+ANE: share of total number of viewers on the ANE network
+CNN: share of total number of viewers on the CNN network
+DISC: share of total number of viewers on the DISC network
+FNEW: share of total number of viewers on the FNEW network
+HIST: share of total number of viewers on the HIST network
+ID: share of total number of viewers on the ID network
+LIFE: share of total number of viewers on the LIFE network
+MSNB: share of total number of viewers on the MSNB network
+NBC: share of total number of viewers on the NBC network
+OTHERS: share of total number of viewers on the OTHERS network
+TLC: share of total number of viewers on the TLC network
+row_num: row number
+one: a column of 1's

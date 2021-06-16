@@ -4,8 +4,8 @@ Notes:
 - Both Python and R are utilized.
 - Given NDAs, we disguise the WOM variables. Specifically, we draw random numbers from a joint Normal distribution with mean = 0, variance-covariance = 1/2 * (var(Log(Post-WOM)), cov(log(Post-WOM), log(Pre-WOM)), cov(log(Post-WOM), log(Pre-WOM)), var(log(Pre-WOM)))
 - The audience size data are not included in the data files due to our data usage agreement. This data can be purchased from Comscore (https://www.comscore.com/Products/Television).
-- To avoid reposting public data, we disguise the voter preference variable, collected from USC Dornsife/Los Angeles Times Poll, by adding random number drawn from N(0, 1/5 * var(voter preference)). For other publicly available datasets, we guide readers in the code to the website(s) where the data can be downloaded. 
-
+- To avoid reposting public data, we disguise the voter preference variable, collected from USC Dornsife/Los Angeles Times Poll, by adding random number drawn from N(0, 1/5 * var(voter preference)). The original data can be downloaded from https://uasdata.usc.edu/index.php.
+- For other publicly available datasets, we guide readers in the code to the website(s) where the data can be downloaded. 
 
 [Build]
 - Slant Measure.ipynb (implement the slant measure from Gentzkow and Shapiro (2010) to transcribed advertising data).

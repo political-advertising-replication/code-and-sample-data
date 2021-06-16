@@ -6,16 +6,20 @@ Notes:
 - The audience size data are not included in the data files due to our data usage agreement. This data can be purchased from Comscore (https://www.comscore.com/Products/Television).
 - To avoid reposting public data, we disguise the voter preference variable, collected from USC Dornsife/Los Angeles Times Poll, by adding random number drawn from N(0, 1/5 * var(voter preference)). For other publicly available datasets, we guide readers in the code to the website(s) where the data can be downloaded. 
 
+
 [Build]
 - Slant Measure.ipynb (implement the slant measure from Gentzkow and Shapiro (2010) to transcribed advertising data).
 - Doc2Vec.ipynb (implement the Doc2Vec algorithm from Le and Mikolov (2014)).
+
 
 [Data]
 - variable_description.txt (provides descriptions on variables)
 - WOM_DATA.csv (main data for the WOM analysis).
 - VOTER_PREFERENCE_DATA.csv (main data for for the voter preference analysis).
 
+
 [Code]
 - Replication R Code.R (replicates the summary statistics and main results of the analyses)
+
 
 Given an NDA with one of the data providers, some of the variables in this repository have been disguised or excluded, as noted above. As such, these files may not produce estimates identical to those in the manuscript.

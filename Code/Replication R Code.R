@@ -1,9 +1,8 @@
 ###################################################################################
 ### Description: replicate the main results along with the descriptive statistics
-### Note: due to NDA, we had to disguise the following variables:
-###       (1) WOM volume, (2) ad reach (audience)
-###       Further, to avoid reposting public data, we disguise (3) voter preference
-###       As a result, estimates may look different from those from the manuscript
+### Note: Given NDAs, we disguise the WOM variables and remove the audience size.
+###       Further, to avoid reposting public data, we disguise voter preference.
+###       As a result, estimates may be different from those in the original paper.
 ###################################################################################
 
 ###################################################################################
@@ -25,17 +24,15 @@ library(lfe)
 
 df_wom = read.csv('C:/Users/donggwan.kim/Desktop/Replication/Data/WOM_DATA.csv')
 
-### descriptive statistics (Table 1)
+### descriptive statistics (Part of Table 1)
 
 df_wom$candidate = ifelse(df_wom$DEM == 1, 'Clinton', 'Trump')
 
 df_wom %>%
   group_by(candidate) %>%
-  summarise(unique_ad_creatives = n_distinct(AD_CREATIVE_ID),
-            num_ad_airings = n(),
+  summarise(num_ad_airings = n(),
             pct_attact = mean(ATT),
-            ad_position_in_break = mean(AD_POSITION),
-            avg_audience = mean(AUDIENCE))
+            ad_position_in_break = mean(AD_POSITION))
 
 ### descriptive statistics (Table 3)
 
@@ -54,7 +51,7 @@ df_wom %>%
 
 ### descriptive statistics (Part of Table 4)
 
-df_wom$pct_change_wom = (df_wom$CAN_WOM_5_POST - df_wom$CAN_WOM_5_PRE) / (df_wom$CAN_WOM_5_PRE + 1)
+df_wom$pct_change_wom = (exp(df_wom$LOG_CAN_WOM_5_POST) - exp(df_wom$LOG_CAN_WOM_5_PRE)) / (exp(df_wom$LOG_CAN_WOM_5_PRE) + 1)
 
 df_wom %>%
   group_by(candidate) %>%
@@ -68,26 +65,22 @@ df_wom %>%
 
 ### run regressions (Table 5)
 
-reg1 = felm(log(CAN_WOM_5_POST + 1) ~ log(CAN_WOM_5_PRE + 1) + 
-              DEM + log(AUDIENCE) + AD_LENGTH_IND + AD_POSITION + 
-              slant + consistency + ATT | WEEK + Day + TIME_WINDOW + PROG_GENRE + NETWORK | 0 | DEM,
-            data = df_wom)
+reg1 = felm(LOG_CAN_WOM_5_POST ~ LOG_CAN_WOM_5_PRE + DEM + AD_LENGTH_IND + AD_POSITION + 
+              slant + consistency + ATT | WEEK + Day + TIME_WINDOW + PROG_GENRE + NETWORK | 0 | DEM, data = df_wom)
 
-reg2 = felm(log(CAN_WOM_5_POST + 1) ~ log(CAN_WOM_5_PRE + 1) + 
-              DEM + log(AUDIENCE) + AD_LENGTH_IND + AD_POSITION + 
+reg2 = felm(LOG_CAN_WOM_5_POST ~ LOG_CAN_WOM_5_PRE + DEM + AD_LENGTH_IND + AD_POSITION + 
               slant:PRE_OCT_1 + slant:POST_OCT_1 +
               PRE_OCT_1:consistency + POST_OCT_1:consistency + 
-              PRE_OCT_1:ATT + POST_OCT_1:ATT | WEEK + Day + TIME_WINDOW + PROG_GENRE + NETWORK | 0 | DEM,
-            data = df_wom)
+              PRE_OCT_1:ATT + POST_OCT_1:ATT | WEEK + Day + TIME_WINDOW + PROG_GENRE + NETWORK | 0 | DEM, data = df_wom)
 
-### print results
+### results (without the audience size variable)
 
 stargazer(reg1, reg2, 
           se = list(coef(summary(reg1))[ ,2],
                     coef(summary(reg2))[ ,2]),
           dep.var.labels=c("ln(WoM Post)"),
           column.labels = c("5 min", "5 min"),
-          covariate.labels = c('log(WoM Pre)', 'Pro-Clinton Ad', 'log(Audience)',
+          covariate.labels = c('log(WoM Pre)', 'Pro-Clinton Ad', 
                                'Ad Length (1 if > 30 Seconds)', 'Ad Position in Break', 
                                'Slant', 'Consistency', 'Attack',
                                'Slant X Pre Oct. 1', 'Slant X Post Oct. 1',
@@ -105,8 +98,8 @@ stargazer(reg1, reg2,
 
 ### import data
 
-df_vp = read.csv('C:/Users/donggwan.kim/Desktop/Replication/Data/VOTER_PREFERENCE_DATA.csv')
-df_vp$one = 1
+df_vp = read.csv('C:/Users/donggwan.kim/Desktop/Replication/Data/VOTER_PREF_DATA.csv')
+head(df_vp)
 
 ### descriptive statistics (Part of Table 4)
 
@@ -126,7 +119,6 @@ df_vp %>%
 
 plm1 = plm(Vote_Share ~ Lagged_VS + no_ad_day + 
              ad_day:Weighted_Slant + ad_day:Weighted_Cosine + ad_day:NEG + 
-             ad_day:log(tot_audience + 1) + one:log(comp_audience + 1) +
              ad_day:TOT_INSTANCE + ad_day:POSITION + ad_day:LENGTH + 
              ad_day:AWARDS + ad_day:COMEDY + ad_day:DOCUMENTARY + ad_day:DRAMA_ADVENTURE +
              ad_day:MOVIE + ad_day:NEWS_POLITICAL + ad_day:SLICE_OF_LIFE + ad_day:SPORTS + ad_day:SUSPENSE_MYSTERY +
@@ -135,13 +127,12 @@ plm1 = plm(Vote_Share ~ Lagged_VS + no_ad_day +
              as.factor(WEEK),
            data = na.omit(df_vp), 
            model = "within", 
-           index = c("DEM", "DATE"))
+           index = c("DEM"))
 
 plm2 = plm(Vote_Share ~ Lagged_VS + no_ad_day +
              ad_day:Weighted_Slant:before_oct + ad_day:Weighted_Slant:after_oct +
              ad_day:Weighted_Cosine:before_oct + ad_day:Weighted_Cosine:after_oct +
              ad_day:NEG:before_oct + ad_day:NEG:after_oct +
-             ad_day:log(tot_audience + 1) + one:log(comp_audience + 1) +
              ad_day:TOT_INSTANCE + ad_day:POSITION + ad_day:LENGTH + 
              ad_day:AWARDS + ad_day:COMEDY + ad_day:DOCUMENTARY + ad_day:DRAMA_ADVENTURE +
              ad_day: MOVIE + ad_day:NEWS_POLITICAL + ad_day:SLICE_OF_LIFE + ad_day:SPORTS + ad_day:SUSPENSE_MYSTERY +
@@ -150,20 +141,19 @@ plm2 = plm(Vote_Share ~ Lagged_VS + no_ad_day +
              as.factor(WEEK),
            data = na.omit(df_vp), 
            model = "within", 
-           index = c("DEM", "DATE"))
+           index = c("DEM"))
 
 stargazer(plm1, plm2,
           se = list(coeftest(plm1, vcov = vcovHC(plm1), type = 'HC1')[ ,2],
                     coeftest(plm2, vcov = vcovHC(plm2), type = 'HC1')[ ,2]),
-          omit = c('WEEK', 'DEM', 'AWARDS', 'COMEDY', 'DOCUMENTARY', 'DRAMA_ADVENTURE',
-                   'MOVIE', 'NEWS_POLITICAL', 'SLICE_OF_LIFE', 'SPORTS', 'SUSPENSE_MYSTERY',
-                   'ANE', 'CNN', 'DISC', 'FNEW', 'HIST', 'ID', 'LIFE', 'MSNB', 'NBC', 'OTHERS', 'TLC',
-                   'TV1', 'CBS', 'LMN'),
+          omit = c('WEEK', 'AWARDS', 'COMEDY', 'DOCUMENTARY', 'DRAMA_ADVENTURE', 'MOVIE', 'NEWS_POLITICAL', 
+                   'SLICE_OF_LIFE', 'SPORTS', 'SUSPENSE_MYSTERY', 'ANE', 'CNN', 'DISC', 'FNEW', 'HIST', 'ID', 
+                   'LIFE', 'MSNB', 'NBC', 'OTHERS', 'TLC', 'TV1', 'CBS', 'LMN'),
           omit.stat=c("LL","ser","f"),
           column.labels = c("Voter Preference", "Voter Preference"),
           covariate.labels = c('Lagged Voter Pref.', '1(Day with No Ad)', 
                                'Slant', 'Consistency', 'Attack',
-                               "log(Audience:Candidate's)", "log(Audience:Rival's)", '# of Ad Airings',
+                               '# of Ad Airings',
                                'Avg. Ad Position in Break', 'Avg. Ad Length (1 if > 30 Seconds)', 
                                'Slant X Pre Oct. 1', 'Slant X Post Oct. 1',
                                'Consistency X Pre Oct. 1', 'Consistency X Post Oct. 1',

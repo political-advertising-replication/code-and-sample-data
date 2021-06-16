@@ -121,9 +121,9 @@ plm1 = plm(Vote_Share ~ Lagged_VS + no_ad_day +
              ad_day:Weighted_Slant + ad_day:Weighted_Cosine + ad_day:NEG + 
              ad_day:TOT_INSTANCE + ad_day:POSITION + ad_day:LENGTH + 
              ad_day:AWARDS + ad_day:COMEDY + ad_day:DOCUMENTARY + ad_day:DRAMA_ADVENTURE +
-             ad_day:MOVIE + ad_day:NEWS_POLITICAL + ad_day:SLICE_OF_LIFE + ad_day:SPORTS + ad_day:SUSPENSE_MYSTERY +
+             ad_day:MOVIE + ad_day:NEWS_POLITICAL + ad_day:SLICE_OF_LIFE + ad_day:SPORTS + 
              ad_day:ANE + ad_day:CNN + ad_day:DISC + ad_day:FNEW + ad_day:HIST + ad_day:ID + 
-             ad_day:LIFE + ad_day:MSNB + ad_day:NBC + ad_day:OTHERS + ad_day:TLC +
+             ad_day:LIFE + ad_day:MSNB + ad_day:NBC + ad_day:OTHERS +
              as.factor(WEEK),
            data = na.omit(df_vp), 
            model = "within", 
@@ -135,9 +135,9 @@ plm2 = plm(Vote_Share ~ Lagged_VS + no_ad_day +
              ad_day:NEG:before_oct + ad_day:NEG:after_oct +
              ad_day:TOT_INSTANCE + ad_day:POSITION + ad_day:LENGTH + 
              ad_day:AWARDS + ad_day:COMEDY + ad_day:DOCUMENTARY + ad_day:DRAMA_ADVENTURE +
-             ad_day: MOVIE + ad_day:NEWS_POLITICAL + ad_day:SLICE_OF_LIFE + ad_day:SPORTS + ad_day:SUSPENSE_MYSTERY +
+             ad_day: MOVIE + ad_day:NEWS_POLITICAL + ad_day:SLICE_OF_LIFE + ad_day:SPORTS +
              ad_day:ANE + ad_day:CNN + ad_day:DISC + ad_day:FNEW + ad_day:HIST + ad_day:ID + 
-             ad_day:LIFE + ad_day:MSNB + ad_day:NBC + ad_day:OTHERS + ad_day:TLC +
+             ad_day:LIFE + ad_day:MSNB + ad_day:NBC + ad_day:OTHERS +
              as.factor(WEEK),
            data = na.omit(df_vp), 
            model = "within", 

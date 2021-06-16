@@ -1,6 +1,4 @@
-# Replication
-
-These files may be used for replication only.
+# Code and Sample Data
 
 Notes:
 - Both Python and R are utilized.
@@ -20,4 +18,4 @@ Notes:
 [Code]
 - Replication R Code.R (replicates the summary statistics and main results of the analyses)
 
-Given an NDA with one of the data providers, some of the variables in this repository have been disguised or excluded, as noted above. As such, these replication files may not produce estimates identical to those in the manuscript.
+Given an NDA with one of the data providers, some of the variables in this repository have been disguised or excluded, as noted above. As such, these files may not produce estimates identical to those in the manuscript.

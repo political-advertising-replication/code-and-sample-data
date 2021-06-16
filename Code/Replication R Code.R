@@ -1,8 +1,7 @@
 ###################################################################################
 ### Description: replicate the main results along with the descriptive statistics
-### Note: Given NDAs, we disguise the WOM variables and remove the audience size.
-###       Further, to avoid reposting public data, we disguise voter preference.
-###       As a result, estimates may be different from those in the original paper.
+### Note: as noted in the read me file, some variables are disguised or removed.
+### As such, these replication files may not produce estimates identical to those in the manuscript.
 ###################################################################################
 
 ###################################################################################

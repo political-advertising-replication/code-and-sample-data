@@ -9,8 +9,8 @@ Notes:
 
 [Build]
 - Slant Measure.ipynb (implement the slant measure from Gentzkow and Shapiro (2010) to transcribed advertising data).
+- Poll_Data_Cleaning.R (describes the procedure for cleaning the data from USC Dornsife / LA Times.
 - Doc2Vec.ipynb (implement the Doc2Vec algorithm from Le and Mikolov (2014)).
-
 
 [Data]
 - variable_description.txt (provides descriptions on variables)

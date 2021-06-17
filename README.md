@@ -17,7 +17,7 @@ Notes:
 [Data]
 - variable_description.txt (provides descriptions on variables)
 - WOM_DATA.csv (main data for the WOM analysis).
-- VOTER_PREFERENCE_DATA.csv (main data for for the voter preference analysis).
+- VOTER_PREFERENCE_DATA.csv (main data for the voter preference analysis).
 
 [Code]
 - Replication R Code.R (replicates the summary statistics and main results of the original paper)

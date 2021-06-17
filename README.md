@@ -12,6 +12,7 @@ Notes:
 - Slant Measure.ipynb (implement the slant measure from Gentzkow and Shapiro (2010)).
 - Doc2Vec.ipynb (implement the Doc2Vec algorithm from Le and Mikolov (2014)).
 - Poll_Data_Cleaning.R (describes the procedure for cleaning the data from USC Dornsife / LA Times).
+- Voter_Pref_Construct.R (describes the procedure for deriving daily-level independent variables for the voter preference analysis).
 
 [Data]
 - variable_description.txt (provides descriptions on variables)

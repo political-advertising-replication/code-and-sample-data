@@ -5,7 +5,7 @@ These files may be used for replication only.
 Notes:
 - Both Python and R are utilized.
 - The WOM and audience size data are not included in the data files due to our data usage agreements. The WOM data can be purchased from Brandwatch (https://www.brandwatch.com/) and the audience size data from Comscore (https://www.comscore.com/Products/Television).
-- To avoid reposting public data, we drop the voter preference variable. The original data can be downloaded from https://uasdata.usc.edu/index.php.
+- To avoid reposting public data, the voter preference variable is not included in the data files. The USC/LA TIMES poll data can be downloaded from https://uasdata.usc.edu/index.php.
 - For other publicly available datasets, we guide readers in the code to the website(s) where the data can be downloaded. 
 
 [Build]

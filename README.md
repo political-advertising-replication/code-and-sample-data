@@ -21,4 +21,4 @@ Notes:
 [Code]
 - Replication R Code.R (replicates the summary statistics and main results of the original paper)
 
-Given NDAs with the data providers, some of the variables in this repository have been excluded, as noted above. As such, these files may not produce estimates identical to those in the manuscript.
+Given NDAs with the data providers, some of the variables in this repository have been excluded, as noted above. As such, these files may not produce estimates identical to those in the manuscript. 

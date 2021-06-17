@@ -1,6 +1,6 @@
 WOM_DATA.csv
-- LOG_CAN_WOM_5_POST: number of Tweets (in log) about candidate within 5 minutes after the ad airs (disguised)
-- LOG_CAN_WOM_5_PRE: number of Tweets (in log) about candidate within 5 minutes before the ad airs (disguised)
+- LOG_CAN_WOM_5_POST: number of Tweets (in log) about candidate within 5 minutes after the ad airs (not included in the data file)
+- LOG_CAN_WOM_5_PRE: number of Tweets (in log) about candidate within 5 minutes before the ad airs (not included in the data file)
 - DEM: 1 if the ad supports Clinton and 0 otherwise
 - ATT: 1 if attack/negative tone and 0 otherwise
 - AD_LENGTH_IND: 1 if an ad is over 30 seconds and 0 otherwise
@@ -18,8 +18,8 @@ WOM_DATA.csv
 VOTER_PREFERENCE_DATA.csv
 - DEM: 1 if the ad supports Clinton and 0 otherwise
 - WEEK: week indicator
-- Vote_Share: voter preference in % (disguised)
-- Lagged_VS: one day lagged voter preference in % (disguised)
+- Vote_Share: voter preference in % (not included in the data file)
+- Lagged_VS: one day lagged voter preference in % (not included in the data file)
 - ad_day: 1 if the candidate aired ads in the previous day and 0 otherwise
 - no_ad_day: 1 if the candidate did not air ads in the previous day and 0 otherwise
 - before_oct: 1 if the ad airs prior to Oct. 1 and 0 otherwise
